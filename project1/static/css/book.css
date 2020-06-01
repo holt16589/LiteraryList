@@ -1,0 +1,58 @@
+.book-img{
+  display: block;
+  margin: auto;
+  width: 75%;
+}
+
+.book-container {
+  background: #fff;
+  display: grid;
+  padding-top: 10vh;
+  padding-right: 10vh;
+  padding-left: 10vh;
+  padding-bottom: 10vh;
+}
+.checked {
+  color: orange;
+}
+
+.grlogo{
+  padding-top: 1vh;
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
+   margin-top: 20em;
+}
+
+.review-container{
+padding-bottom: 8vh;
+}
+
+.review-section{
+padding-bottom: 8vh;
+}
+.rate-button{
+  padding-right: 1em;
+}
+
+.star-line{
+  padding-bottom: 1em;
+}
+
+.review-title{
+  margin-top: 1em;
+}
+
+hr {
+  width: 85vw;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}

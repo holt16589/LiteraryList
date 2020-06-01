@@ -1,0 +1,74 @@
+{% extends "template.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block title %}
+  <title>Log In</title>
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ url_for('index') }}">LiteraryList</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('login') }}">Login <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+{% if error %}
+<div class="alert alert-danger" role="alert">
+  Error: Invalid username and password combination. Please try again.
+</div>
+{% endif %}
+
+{% if log_out %}
+<div class="alert alert-success" role="alert">
+  You've been logged out successfully.
+</div>
+{% endif %}
+
+  <div class = "container-fluid">
+    <section class = "row text-center justify-content-center">
+      <section class ="col-12 col-sm-6 col-md-8">
+
+  <form class = "form-container justify-content-center" method ="POST" >
+    <img src="../static/images/undraw_reading_0re1.svg" width=100px class = "img">
+    <br>
+        <h2 class="title text-center">Welcome to Literary List!</h2>
+
+        <div class="form-group">
+    <label for="label">Username</label>
+    <input type="text" class="input" name = "username" placeholder="Username">
+  </div>
+  <div class="form-group">
+    <label for="label">Password</label>
+    <input type="password" class="input" name = "password" placeholder = "Password">
+  </div>
+
+  <div class = "formbuttons">
+  <button type="submit" class="btn btn-primary btn-block">Login</button>
+  <p><a href="{{ url_for('signup') }}">Don't have an account? Register here!</a></p>
+  </div>
+  </form>
+  </section>
+  </section>
+
+  </div>
+
+  {% endblock %}

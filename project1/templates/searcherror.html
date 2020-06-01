@@ -1,0 +1,49 @@
+{% extends "template.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+{% endblock %}
+
+{% block title %}
+  <title>Error</title>
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ url_for('index') }}">LiteraryList</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('search') }}">Search Books <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="alert alert-danger" role="alert">
+  <h5>No more results to display!</h5>
+</div>
+
+<div class = "container-fluid">
+  <section class = "row text-center justify-content-center error-image">
+    <section class ="col-12 col-sm-6 col-md-8">
+
+    <img src="{{url_for('static', filename='./images/undraw_warning_cyit.svg')}}" class="card-img-top" alt=" ">
+
+</section>
+</section>
+
+</div>
+
+<div class="row text-center justify-content-center previous-button">
+<a href="{{ url_for('searchPage', page_id=next_page, field=field, query=query) }}"><button type="button" class="btn btn-secondary btn-lg">Return to Previous Page</button></a>
+</div>
+{% endblock %}

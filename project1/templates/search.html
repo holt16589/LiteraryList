@@ -1,0 +1,87 @@
+{% extends "template.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+{% endblock %}
+
+{% block title %}
+  <title>Book Search</title>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ url_for('index') }}">LiteraryList</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('search') }}">Search Books <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('myreviews') }}">My Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+{% if error %}
+<div class="alert alert-danger" role="alert">
+  Error: No results found! Please modify your search.
+</div>
+{% endif %}
+
+<div class="container-fluid">
+  <div class ="row form-container">
+  <div class="col-12 col-sm-6 col-md-6 text-center">
+    <img src="../static/images/undraw_bookshelves_xekd.svg" class = "img">
+  </div>
+  <div class="col-6 col-md-6 text-center align-self-center">
+
+    <form class = "form justify-content-center" method ="POST" action="/search">
+      <h2 class="title text-center">Search Books</h2>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="search_options" id="inlineRadio1" value="title" checked>
+      <label class="form-check-label" for="inlineRadio1">Title</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="search_options" id="inlineRadio2" value="author">
+      <label class="form-check-label" for="inlineRadio2">Author</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="search_options" id="inlineRadio3" value="year">
+      <label class="form-check-label" for="inlineRadio3">Year</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="search_options" id="inlineRadio4" value="isbn">
+      <label class="form-check-label" for="inlineRadio3">ISBN</label>
+    </div>
+
+          <div class="form-group ">
+      <input type="text" class="input search-query" name = "search" placeholder="Search" required="required" data-error="Please enter a value.">
+    </div>
+
+    <div class = "formbuttons">
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </div>
+    </form>
+
+
+  </div>
+</div>
+</div>
+
+<footer class="container-fluid footer bg-dark">
+    <small>Made by Kevin Holt</small>
+</footer>
+
+
+{% endblock %}

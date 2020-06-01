@@ -1,0 +1,86 @@
+{% extends "template.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/book.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block title %}
+  <title>My Reviews</title>
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ url_for('index') }}">LiteraryList</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('search') }}">Search Books <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('myreviews') }}">My Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+{% if book_reviews %}
+<h2 class="title text-center review-title">My Reviews</h2>
+<hr>
+{% else %}
+<h3>No reviews to show!</h3>
+{% endif %}
+
+{% for review in book_reviews %}
+<div class="row review-section justify-content-center">
+<div class="card" style="width: 75vw;">
+  <div class="card-body">
+    <h5 class="card-title">{{ review.book_name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ review.date }}</h6>
+
+<span class="fa fa-star checked"></span>
+    {% if review.rating == 2 %}
+<span class="fa fa-star checked"></span>
+    {% elif review.rating == 3 %}
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    {% elif review.rating == 4 %}
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    {% else %}
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+    {% endif %}
+
+
+    <p class="card-text">{{ review.review }}</p>
+<br>
+<a href="{{ url_for('bookPage', isbn = review.isbn) }}" class="btn btn-primary mt-auto">Details</a>
+  </div>
+</div>
+</div>
+{% endfor %}
+
+<footer class="container-fluid footer bg-dark">
+    <small>Made by Kevin Holt</small>
+</footer>
+
+
+
+{% endblock %}

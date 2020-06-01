@@ -1,0 +1,144 @@
+{% extends "template.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/book.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block title %}
+  <title>{{book.title}}</title>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ url_for('index') }}">LiteraryList</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('search') }}">Search Books <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('myreviews') }}">My Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+{% if error %}
+<div class="alert alert-danger" role="alert">
+  Error: You've already submitted a review for this book!
+</div>
+{% endif %}
+
+<div class="container-fluid book-container">
+  <div class ="row justify-content-center">
+  <div class="col-sm-4 text-center align-self-center">
+    <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn }}-L.jpg" class = "img book-img">
+  </div>
+  <div class="col-sm-4 text-center align-self-center">
+
+    <h2>{{book.title}}</h2>
+    <h6>By {{book.author}}</h6>
+  <h6>Publication Year: {{book.year}}</h6>
+  <h6>ISBN: {{book.isbn}}</h6>
+  <br>
+{% for star in range(num_stars) %}
+<span class="fa fa-star checked"></span>
+  {% endfor %}
+  {% for star in range(num_blank) %}
+  <span class="fa fa-star"></span>
+    {% endfor %}
+    <br>
+    <i>Average Rating of {{avg_rating}} with {{num_ratings}} ratings</i>
+    <br>
+    <img src="https://s.gr-assets.com/assets/icons/goodreads_icon_32x32-6c9373254f526f7fdf2980162991a2b3.png" class = "img grlogo">
+  </div>
+</div>
+</div>
+
+<div class = "container-fluid review-container">
+  <section class = "row text-center justify-content-center">
+    <section class ="col-12 col-sm-6 col-md-8">
+
+<form class = "form-container justify-content-center" method ="POST" >
+
+      <h2 class="title text-center">Leave a review!</h2>
+
+
+<div class="form-group">
+<h6>Rate out of 5 stars:</h6>
+<div class="form-check form-check-inline star-line">
+<input class="form-check-input" type="radio" name="rating" id="rating1" value="1">
+<label class="form-check-label rate-button" for="inlineRadio1">1</label>
+<input class="form-check-input " type="radio" name="rating" id="rating2" value="2">
+<label class="form-check-label rate-button" for="inlineRadio2">2</label>
+<input class="form-check-input" type="radio" name="rating" id="rating3" value="3" checked>
+<label class="form-check-label rate-button for="inlineRadio3">3</label>
+<input class="form-check-input" type="radio" name="rating" id="rating4" value="4">
+<label class="form-check-label rate-button" for="inlineRadio4">4</label>
+<input class="form-check-input" type="radio" name="rating" id="rating5" value="5" >
+<label class="form-check-label rate-button" for="inlineRadio5">5</label>
+</div>
+    <textarea class="form-control" id="review" name="review" rows="3"></textarea>
+  </div>
+<button type="submit" class="btn btn-primary btn-block">Submit</button>
+
+</form>
+</section>
+</section>
+
+</div>
+
+{% if book_reviews %}
+<h2 class="title text-center">Community Reviews</h2>
+<hr>
+{% endif %}
+
+{% for review in book_reviews %}
+<div class="row review-section justify-content-center">
+<div class="card" style="width: 75vw;">
+  <div class="card-body">
+    <h5 class="card-title">{{ review.username }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ review.date }}</h6>
+
+<span class="fa fa-star checked"></span>
+    {% if review.rating == 2 %}
+<span class="fa fa-star checked"></span>
+    {% elif review.rating == 3 %}
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    {% elif review.rating == 4 %}
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    {% else %}
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+    {% endif %}
+
+
+    <p class="card-text">{{ review.review }}</p>
+  </div>
+</div>
+</div>
+{% endfor %}
+
+<footer class="container-fluid footer bg-dark">
+    <small>Made by Kevin Holt</small>
+</footer>
+
+
+
+{% endblock %}

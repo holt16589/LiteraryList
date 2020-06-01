@@ -1,0 +1,30 @@
+.img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+.form-container {
+  background: #fff;
+  position: absolute;
+  top: 15vh;
+  padding: 30px;
+}
+.search-query {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+h2{
+  margin-bottom: 30px;
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
+}

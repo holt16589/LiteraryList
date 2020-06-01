@@ -1,0 +1,68 @@
+{% extends "template.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+{% endblock %}
+
+{% block title %}
+  <title>Search Result</title>
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ url_for('index') }}">LiteraryList</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('search') }}">Search Books <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('myreviews') }}">My Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="alert alert-secondary" role="alert">
+  <h5>Search Results</h5>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 book-section">
+    {% for book in books %}
+      <div class="col mb-4">
+    <div class="card h-100"  style="width:15rem;">
+      {% if func("http://covers.openlibrary.org/b/isbn/"+ book.isbn + "-L.jpg") %}
+      <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn }}-L.jpg" class="card-img-top" alt=" ">
+      {% else %}
+      <img src="{{url_for('static', filename='./images/undraw_empty_xct9.svg')}}" class="card-img-top" alt=" ">
+      {% endif %}
+
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ book.title }}</h5>
+        <p class="card-text">
+        <b>Author:</b>  {{ book.author }}<br>
+        <b>Year:</b>  {{ book.year }}<br>
+        <b>ISBN:</b>  {{ book.isbn }}
+        </p>
+        <a href="{{ url_for('bookPage', isbn = book.isbn) }}" class="btn btn-primary btn-block mt-auto">Details</a>
+      </div>
+    </div>
+        </div>
+      {% endfor %}
+</div>
+<div class="row text-center justify-content-center">
+<a href="{{ url_for('searchPage', page_id=next_page, field=option, query=query) }}"><button type="button" class="btn btn-secondary btn-lg">Next Page</button></a>
+</div>
+<div class="row text-center justify-content-center previous-button">
+<a href="{{ url_for('searchPage', page_id=next_page-2, field=option, query=query) }}"><button type="button" class="btn btn-secondary btn-lg">Previous Page</button></a>
+</div>
+
+{% endblock %}

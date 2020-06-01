@@ -1,0 +1,73 @@
+{% extends "template.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block title %}
+  <title>Sign Up</title>
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ url_for('index') }}">LiteraryList</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('signup') }}">Sign Up <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+{% if new_user %}
+<div class="alert alert-success" role="alert">
+  Your account has successfully been created! Please login.
+</div>
+{% endif %}
+
+{% if error %}
+<div class="alert alert-danger" role="alert">
+  Error: Username already exists!
+</div>
+{% endif %}
+
+  <div class = "container-fluid">
+    <section class = "row text-center justify-content-center">
+      <section class ="col-12 col-sm-6 col-md-8">
+
+  <form class = "form-container justify-content-center" method ="POST" action="/signup">
+    <img src="../static/images/undraw_reading_time_gvg0.svg" width=100px class = "img">
+    <br>
+        <h2 class="title text-center">Enter your details below to create your account!</h2>
+        <div class="form-group">
+    <label for="label">Username</label>
+    <input type="text" class="input" name = "username" placeholder="Username" required="required" data-error="Please enter a username.">
+  </div>
+  <div class="form-group">
+    <label for="label">Password</label>
+    <input type="password" class="input" name = "password" placeholder = "Password" required="required" data-error="Please enter a password">
+  </div>
+
+  <div class = "formbuttons">
+  <button type="submit" class="btn btn-primary btn-block">Sign Up!</button>
+  <p><a href="{{ url_for('login') }}">Login</a></p>
+  </div>
+  </form>
+  </section>
+  </section>
+
+  </div>
+
+  {% endblock %}
