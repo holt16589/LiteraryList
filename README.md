@@ -1,3 +1,6 @@
-# Project 1
+# LiteraryList - a book review website 
 
-Web Programming with Python and JavaScript
+Built with Python and Flask
+
+# View the app on Heroku
+https://theliterarylist.herokuapp.com
