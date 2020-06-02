@@ -1,4 +1,4 @@
-# LiteraryList - a book review website 
+# LiteraryList - a book review website (HarvardX CS50 Project 1)
 
 Built with Python and Flask
 
