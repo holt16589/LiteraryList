@@ -1,3 +1,5 @@
+#import file used to initially import list of books contained in "books.cvs"
+
 import csv
 import os
 

@@ -187,12 +187,14 @@ def bookPage(isbn):
     book_reviews = db.execute("SELECT * FROM user_reviews WHERE book_id = :review_book_id",{"review_book_id": book.id}).fetchall()
     return render_template("book.html", book=book, book_reviews=book_reviews, avg_rating=avg_rating, num_ratings=num_ratings, num_stars=num_stars, num_blank= 5-num_stars, error=False)
 
+#display all reviews written by the current logged in user
 @app.route('/myreviews')
 def myreviews():
     currentUser = session["username"]
     book_reviews = db.execute("SELECT * FROM user_reviews WHERE username = :currentUser",{"currentUser": currentUser}).fetchall()
     return render_template("myreviews.html", book_reviews=book_reviews)
 
+#return JSON file for API call for given ISBN
 @app.route('/api/<isbn>')
 def bookAPI(isbn):
     book = db.execute("SELECT title, author, year, book_list.isbn, COUNT(user_reviews.review_id) as reviewCount, AVG(user_reviews.rating) as averageRating FROM book_list INNER JOIN user_reviews on book_list.id = user_reviews.book_id WHERE book_list.isbn = :isbn GROUP BY title, author, year, book_list.isbn", {"isbn": isbn})
