@@ -8,3 +8,5 @@ This application was built using Python and Flask with an HTML/CSS frontend.
 https://theliterarylist.herokuapp.com
 
 # Screenshots
+
+![](static/images/screenshot1.png)
