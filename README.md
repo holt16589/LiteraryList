@@ -10,18 +10,23 @@ https://theliterarylist.herokuapp.com
 # Screenshots
 
 The following is the index page of the application, which prompts the user to either login or to register for a new account.
+
 ![](static/images/screenshot1.png)
 
 When the user clicks to "login", they are directed to the login screen, where they can enter their credentials to login to their account and initiate a Flask session.
+
 ![](static/images/screenshot2.png)
 
 Once logged in, the user is directed to the search page and is only accessible to logged in users. This allows the user to search for books by either title, author, year or ISBN.
+
 ![](static/images/screenshot3.png)
 
 The results are displayed as shown below once a user submits a search. For example, the below shows the first row of results when the keyword "dark" is searched for book titles. Each page displays 15 results and the remaining results can be reviewed by pressing the "next page" button at the bottom of the page. 
+
 ![](static/images/screenshot4.png)
 
 An example book page is shown below, along with the "Community Reviews" section which displays any existing reviews for a given book.
+
 ![](static/images/screenshot5.png)
 
 ![](static/images/screenshot6.png)
