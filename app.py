@@ -10,7 +10,7 @@ from PIL import Image
 import requests
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'thisisasecretkey'
+app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 
 # Check for environment variable
 if not os.getenv("DATABASE_URL"):
