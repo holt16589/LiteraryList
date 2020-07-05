@@ -1,6 +1,7 @@
 .card-img-top {
     width: 100%;
-    height: 30vw;;
+    height: 30vw;
+    min-height: 300px;
 }
 
 .book-section{
@@ -8,9 +9,16 @@
 }
 
 .previous-button{
-padding-top: 2vw;
+margin-top: 2vw;
+margin-bottom: 15px;
 }
 
 .error-image{
   padding: 4vw;
+}
+
+@media screen and (max-width: 760px) {
+.card{
+  margin: 0 auto;
+}
 }

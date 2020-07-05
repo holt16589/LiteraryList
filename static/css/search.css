@@ -9,7 +9,6 @@
   background: #fff;
   position: absolute;
   top: 15vh;
-  padding: 30px;
 }
 .search-query {
   width: 100%;
@@ -27,4 +26,15 @@ h2{
    width: 100%;
    color: white;
    text-align: center;
+}
+
+
+@media screen and (max-width: 760px) {
+#query-field{
+  width: 90%;
+}
+#search-submit{
+width: 90%;
+margin-left: 18px;
+}
 }

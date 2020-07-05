@@ -27,3 +27,22 @@ margin-left: 45%;
    color: white;
    text-align: center;
 }
+
+@media screen and (max-width: 760px) {
+.carousel-caption h3 {
+font-size: 70%;
+}
+.carousel-caption p {
+font-size: 70%;
+}
+
+.carousel-caption button{
+  font-size: 70%;
+  padding:4px 6px;
+}
+
+.carousel-inner {
+  max-height: 230px;
+}
+
+}
