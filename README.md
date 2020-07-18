@@ -43,7 +43,7 @@ An example book page is shown below, along with the "Community Reviews" section 
 
 If a user makes an API call via the "/api/<isbn>" route, where <isbn> represents an ISBN number for a given book, the application will return a JSON response containing the book’s title, author, publication date, ISBN number, review count, and average score.
   
-  '''
+<pre><code>
   {
     "title": "Memory",
     "author": "Doug Lloyd",
@@ -52,4 +52,4 @@ If a user makes an API call via the "/api/<isbn>" route, where <isbn> represents
     "review_count": 28,
     "average_score": 5.0
 }
-'''
+</code></pre>
