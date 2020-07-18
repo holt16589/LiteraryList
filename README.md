@@ -41,9 +41,9 @@ An example book page is shown below, along with the "Community Reviews" section 
 
 <br>
 
-# API
+# LiteraryList API
 
-If a user makes an API call via the "/api/<isbn>" route, where <isbn> represents an ISBN number for a given book, the application will return a JSON response containing the book’s title, author, publication date, ISBN number, review count, and average score.
+If a user makes an GET request to the "/api/<isbn>" route, where <isbn> represents an ISBN number for a given book, the application will return a JSON response containing the book’s title, author, publication date, ISBN number, review count, and average score.
   <br>
   
  The below is an example of the JSON object returned from the "/api/1632168146" API call.
