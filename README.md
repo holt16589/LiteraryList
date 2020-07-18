@@ -1,6 +1,6 @@
 # LiteraryList
 
-LiteraryList is a web-application that allows users to search for books and view a book page for any given book. Flask routes are used to generate a book page for any book within the database, which displays the Goodreads average rating via the Goodreads API, provides the option for the user to write a new review and displays any user reviews that are already existing. The OpenLibrary API is also used to find the book cover images on the result and book pages using the book's ISBN value. It also features a user-login system, allowing users to register and login. The data for searchable books, user reviews and login info is stored in a SQL database. This was project 1 for Harvard's CS50 Web Programming in Python and JavaScript.
+LiteraryList is a web application that allows users to search for books and leave reviews for any given book. Flask routes are used to generate a book page for any book within the database, which displays the Goodreads average rating via the Goodreads API, provides the option for the user to write a new review and displays any existing user reviews. The OpenLibrary API is used to find book cover images on the results and book pages using the book's ISBN. The application features a user-login system built from scratch using Flask sessions, allowing users to register and login. The data for searchable books, user reviews and login details are stored in a Postgresql database. The application also features an API that allows users to make a GET request to the "/api/<isbn>" route.
 
 This application was built using Python and Flask with an HTML/CSS frontend.
 
@@ -38,3 +38,18 @@ An example book page is shown below, along with the "Community Reviews" section 
 ![](static/images/screenshot5.png)
 
 ![](static/images/screenshot6.png)
+
+# API
+
+If a user makes an API call via the "/api/<isbn>" route, where <isbn> represents an ISBN number for a given book, the application will return a JSON response containing the book’s title, author, publication date, ISBN number, review count, and average score.
+  
+  '''
+  {
+    "title": "Memory",
+    "author": "Doug Lloyd",
+    "year": 2015,
+    "isbn": "1632168146",
+    "review_count": 28,
+    "average_score": 5.0
+}
+'''
