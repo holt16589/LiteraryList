@@ -9,13 +9,13 @@ https://theliterarylist.herokuapp.com
 
 # Screenshots
 
-The following is the index page of the application, which prompts the user to either login or to register for a new account.
+<p>The following is the index page of the application, which prompts the user to either login or to register for a new account.</p>
 
 ![](static/images/screenshot1.png)
 
 
 
-When the user clicks to "login", they are directed to the login screen, where they can enter their credentials to login to their account and initiate a Flask session.
+<p>When the user clicks to "login", they are directed to the login screen, where they can enter their credentials to login to their account and initiate a Flask session.</p>
 
 ![](static/images/screenshot2.png)
 
