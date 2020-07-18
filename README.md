@@ -19,19 +19,19 @@ When the user clicks to "login", they are directed to the login screen, where th
 
 ![](static/images/screenshot2.png)
 
-
+<br>
 
 Once logged in, the user is directed to the search page and is only accessible to logged in users. This allows the user to search for books by either title, author, year or ISBN.
 
 ![](static/images/screenshot3.png)
 
-
+<br>
 
 The results are displayed as shown below once a user submits a search. For example, the below shows the first row of results when the keyword "dark" is searched for book titles. Each page displays 15 results and the remaining results can be reviewed by pressing the "next page" button at the bottom of the page. 
 
 ![](static/images/screenshot4.png)
 
-
+<br>
 
 An example book page is shown below, along with the "Community Reviews" section which displays any existing reviews for a given book.
 
@@ -39,9 +39,12 @@ An example book page is shown below, along with the "Community Reviews" section 
 
 ![](static/images/screenshot6.png)
 
+<br>
+
 # API
 
 If a user makes an API call via the "/api/<isbn>" route, where <isbn> represents an ISBN number for a given book, the application will return a JSON response containing the book’s title, author, publication date, ISBN number, review count, and average score.
+  <br>
   
  The below is an example of the JSON object returned from the "/api/1632168146" API call.
   
