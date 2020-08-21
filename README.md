@@ -2,7 +2,7 @@
 
 LiteraryList is a web application that allows users to search for books and leave reviews for any given book. Flask routes are used to generate a book page for any book within the database, which displays the Goodreads average rating via the Goodreads API, provides the option for the user to write a new review and displays any existing user reviews. The OpenLibrary API is used to find book cover images on the results and book pages using the book's ISBN. The application features a user-login system built from scratch using Flask sessions, allowing users to register and login. The data for searchable books, user reviews and login details are stored in a Postgresql database. The application also features an API that allows users to make a GET request to the "/api/<isbn>" route.
 
-This application was built using Python and Flask with an HTML/CSS frontend.
+This application was built using Python, Flask and a PostgreSQL database with an HTML/CSS frontend.
 
 # View the app on Heroku
 https://theliterarylist.herokuapp.com
