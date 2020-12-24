@@ -1,6 +1,8 @@
 # LiteraryList
 
-LiteraryList is a web-application that allows users to search for books and view a book page for any given book. Flask routes are used to generate a book page for any book within the database, which displays the Goodreads average rating via the Goodreads API, provides the option for the user to write a new review and displays any user reviews that are already existing. The OpenLibrary API is also used to find the book cover images on the result and book pages using the book's ISBN value. It also features a user-login system, allowing users to register and login. The data for searchable books, user reviews and login info is stored in a SQL database. This was project 1 for Harvard's CS50 Web Programming in Python and JavaScript.
+LiteraryList is a web-application that allows users to search for books and view a book page for any given book. Flask routes are used to generate a book page for any book within the database, which displays the Goodreads average rating via the Goodreads API (see note below), provides the option for the user to write a new review and displays any user reviews that are already existing. The OpenLibrary API is also used to find the book cover images on the result and book pages using the book's ISBN value. It also features a user-login system, allowing users to register and login. The data for searchable books, user reviews and login info is stored in a SQL database. This was project 1 for Harvard's CS50 Web Programming in Python and JavaScript.
+
+Note that GoodReads have decommissioned their API as of December 2020 following the initial implementation of this application. As a result, the average rating is no longer dynamically populated using the GoodReads API and a test value of "4.07" is used instead for every book.
 
 This application was built using Python and Flask with an HTML/CSS frontend.
 

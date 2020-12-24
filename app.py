@@ -157,11 +157,14 @@ def bookPage(isbn):
     #extract data for this book from database
     book = db.execute("SELECT * FROM book_list WHERE isbn LIKE LOWER(:isbn)",{"isbn": isbn}).fetchone()
 
-    #extract data from GoodReads API for this book
-    res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "r32opLlYxyoAreMsbkeCdg", "isbns": isbn})
-    review_data = res.json()
-    avg_rating = review_data["books"][0]["average_rating"]
-    num_ratings = review_data["books"][0]["work_ratings_count"]
+    #extract data from GoodReads API for this book (decomissioned in Dec 2020 and no longer works). Sample data is populated below and is used for every book.
+
+    # res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "r32opLlYxyoAreMsbkeCdg", "isbns": isbn})
+    # review_data = res.json()
+    # avg_rating = review_data["books"][0]["average_rating"]
+    # num_ratings = review_data["books"][0]["work_ratings_count"]
+    avg_rating = 4.07
+    num_ratings = 49493
     num_stars = round(float(avg_rating))
 
     #if the user is submitting a review
